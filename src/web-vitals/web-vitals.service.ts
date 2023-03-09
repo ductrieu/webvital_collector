@@ -19,4 +19,14 @@ export class WebVitalsService {
     console.log(newVital);
     return newVital;
   }
+
+  async count(){
+    const numberRecord = await this.VitalsModel.count();
+    return numberRecord;
+  }
+
+  async deleteAll(){
+    const del = await this.VitalsModel.deleteMany({});
+    return del;
+  }
 }
