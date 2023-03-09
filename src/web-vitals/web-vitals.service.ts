@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import {  Injectable } from "@nestjs/common";
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Vital, VitalDocument } from './vital.schema';
 import { WebVitalDto } from './dto/web-vital.dto';
+
 
 @Injectable()
 export class WebVitalsService {
@@ -19,4 +20,16 @@ export class WebVitalsService {
     console.log(newVital);
     return newVital;
   }
+
+  async count() {
+    const numberRecord = await this.VitalsModel.count();
+    return numberRecord;
+  }
+
+  async deleteAll(){
+    const del = await this.VitalsModel.deleteMany({});
+    return del;
+  }
+
+
 }
